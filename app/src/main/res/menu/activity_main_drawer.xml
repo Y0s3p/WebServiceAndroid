@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_conect"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="Conectar " />
+        <item
+            android:id="@+id/nav_getData"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="Mostrar Info." />
+        <item
+            android:id="@+id/nav_insert"
+            android:icon="@android:drawable/ic_menu_upload"
+            android:title="Insertar Info." />
+        <item
+            android:id="@+id/nav_modify"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="Modificar Info" />
+        <item
+            android:id="@+id/nav_delete"
+            android:icon="@android:drawable/ic_menu_delete"
+            android:title="Borrar" />
+    </group>
+
+</menu>
