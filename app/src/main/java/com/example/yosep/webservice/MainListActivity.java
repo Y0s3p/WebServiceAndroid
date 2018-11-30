@@ -44,7 +44,7 @@ public class MainListActivity extends AppCompatActivity {
 
     private void getInformation(){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, server_url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
