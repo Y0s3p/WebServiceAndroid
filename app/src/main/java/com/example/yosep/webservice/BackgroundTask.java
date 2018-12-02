@@ -2,9 +2,11 @@ package com.example.yosep.webservice;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -12,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class BackgroundTask extends AsyncTask<String, Void, Void> {
+public class BackgroundTask extends AsyncTask<String, Void, String> {
 
     Context ctx;
 
@@ -28,11 +30,12 @@ public class BackgroundTask extends AsyncTask<String, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(String... params) {
+    protected String doInBackground(String... params) {
 
         String insert_url = "http://192.168.1.54/componentes/insert.php";
 
         String method = params[0];
+
         if (method.equals("register")){
 
             String marca = params[1];
@@ -47,11 +50,20 @@ public class BackgroundTask extends AsyncTask<String, Void, Void> {
                 httpURLConnection.setDoOutput(true);
                 OutputStream OS = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
-                String data = URLEncoder.encode("marca","UTF-8") +" = "+URLEncoder.encode(marca,"UTF-8")+"&"+
-                                URLEncoder.encode("descripcion","UTF-8") +" = "+URLEncoder.encode(descripcion,"UTF-8")+"&"+
-                                URLEncoder.encode("precio","UTF-8") +" = "+URLEncoder.encode(precio,"UTF-8");
+                String data = URLEncoder.encode("marca","UTF-8") +"="+URLEncoder.encode(marca,"UTF-8")+"&"+
+                                URLEncoder.encode("descripcion","UTF-8") +"="+URLEncoder.encode(descripcion,"UTF-8")+"&"+
+                                URLEncoder.encode("precio","UTF-8") +"="+URLEncoder.encode(precio,"UTF-8");
 
                 bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                OS.close();
+
+                InputStream IS = httpURLConnection.getInputStream();
+                IS.close();
+
+                return "Se ha registrado con exito";
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -69,7 +81,9 @@ public class BackgroundTask extends AsyncTask<String, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+    protected void onPostExecute(String result){
+
+        Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+
     }
 }

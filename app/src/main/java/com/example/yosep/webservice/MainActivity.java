@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_insert) {
 
+            Intent intent = new Intent(this,MainInsertActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_modify) {
 
         } else if (id == R.id.nav_delete) {
