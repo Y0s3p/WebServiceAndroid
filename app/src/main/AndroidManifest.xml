@@ -25,7 +25,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainListActivity" />
-        <activity android:name=".MainInsertActivity"></activity>
+        <activity android:name=".MainInsertActivity" />
+        <activity android:name=".MainUpdateActivity" />
+        <activity android:name=".MainDeleteActivity"></activity>
     </application>
 
 </manifest>

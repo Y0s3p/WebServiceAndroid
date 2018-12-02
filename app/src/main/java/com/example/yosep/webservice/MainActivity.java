@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+
             return true;
         }
 
@@ -99,7 +103,13 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_modify) {
 
+            Intent intent = new Intent(this,MainUpdateActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_delete) {
+
+            Intent intent = new Intent(this,MainDeleteActivity.class);
+            startActivity(intent);
 
         }
 
@@ -179,16 +189,9 @@ public class MainActivity extends AppCompatActivity
 
     public void parseJSON(){
 
-        if (jsonString == null){
-
-            Toast.makeText(getApplicationContext(),"Primero conectate a la base de daros y genera el JSON",Toast.LENGTH_LONG).show();
-
-        }else {
-
             Intent intent = new Intent(this,MainListActivity.class);
             startActivity(intent);
 
-        }
 
     }
 }
